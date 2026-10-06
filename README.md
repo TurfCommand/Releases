@@ -120,6 +120,7 @@ Click **Save and open dashboard**. If you saved Ecowitt keys, the 90-day history
   - **Mac:** the window goes to the Dock; click TurfCommand in the Dock to bring it back. The TurfCommand icon also sits in the menu bar at the top of the screen.
 - The tray icon (Windows, right-click) and the menu-bar icon (Mac) have:
   - **Open TurfCommand**
+  - **Full screen**: fills the whole screen with no window frame, handy for a wall display. You can also press **F11** in the TurfCommand window; **Esc** leaves full screen. Each computer remembers its own choice.
   - **Start with Windows** / **Start at login**
   - **Check for updates** and **Install updates automatically**
   - **Save logs for support…** and **Open log folder** (see [Reporting a problem](#reporting-a-problem))
