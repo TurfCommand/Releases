@@ -108,6 +108,7 @@ The keys are stored in Windows Credential Manager or the macOS Keychain, not in 
 
 ### 4. Your lawn
 
+- **Height of cut**: how short you mow, in inches (for example 0.5). The Mowing Pressure card uses it to tell you when to mow: **Low pressure**, **Mow soon**, **Mow**, **Mow now**, **Overdue**. Leave it blank to see just the GDD count. Heights above 1" use estimated levels.
 - **Last PGR application** and **Last mow**: enter the dates if you know them. They start the PGR and mowing counters. If you leave them blank, the counters start today, and the PGR card shows **Not Set** until you log an application.
 - The PGR target, pre-emergent temperatures, weekly irrigation target and sprayer settings come with sensible defaults. Change them later if you like.
 
@@ -135,7 +136,7 @@ Click **Save and open dashboard**. If you saved Ecowitt keys, the 90-day history
 TurfCommand updates itself:
 
 - It checks for a new version when it starts and every 6 hours.
-- A new version downloads in the background and installs **around 3 AM**. TurfCommand closes and reopens by itself.
+- A new version downloads in the background. If TurfCommand finds it right after starting, it installs right away; otherwise it installs **around 3 AM**, or the next time your computer is on after a 3 AM it slept through. TurfCommand closes and reopens by itself.
 - Every update is checked against a digital signature before it runs, so only genuine TurfCommand updates install.
 - To update right away, choose **Check for updates** in the tray or menu-bar icon.
 - To turn automatic installs off, untick **Install updates automatically**. Updates then install only when you choose **Check for updates**.
