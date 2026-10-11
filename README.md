@@ -147,7 +147,7 @@ TurfCommand updates itself:
 If you have more than one computer, one of them can be the TurfCommand that collects, and the others can show it:
 
 1. On the computer that stays on: **Settings → Sharing → Share this TurfCommand on my home network**, save, then quit and reopen TurfCommand. Settings then shows its address.
-2. On another computer with TurfCommand installed: **Settings → Use the TurfCommand on another PC**, enter that address, then **Test** and **Use it and restart**. To go back, choose **Stop viewing** in its tray or menu-bar icon.
+2. On another computer with TurfCommand installed: **Settings → Use the TurfCommand on another PC**, enter that address including the number after the colon, then **Test** and **Use it and restart**. To go back, choose **Stop viewing** in its tray or menu-bar icon.
 
 Anyone on your home Wi-Fi can then open the shared dashboard and change its settings, so only turn sharing on for a home network you trust.
 
@@ -172,7 +172,7 @@ Anyone on your home Wi-Fi can then open the shared dashboard and change its sett
 - **Modeled readings (no-sensor mode):** soil temperature runs warmer than a real probe, so the fall pre-emergent alert may come late.
 - **A sensor in direct sun reads hot.** The temperature sensor built into the gateway (and any unshielded outdoor sensor) can read 15–20°F high in sunlight. That inflates GDD totals. Keep the sensor shaded, ideally in a radiation shield.
 - **A new install has no history** unless you run the 90-day Ecowitt import. Until then, 7-day totals and 5-day soil averages fill in over the first week.
-- **Only one copy can run.** If TurfCommand says port 8000 is already in use, another copy (or another program) is using it. Quit the other copy, or restart the computer.
+- **Another program using TurfCommand's port:** since 0.5.3, TurfCommand moves to a free port by itself and stays there. If you share it at home, use the new address that its Settings shows on your other computers. **0.5.2 and older** can't start in that case, so they can't update themselves either: download 0.5.3 and install it by hand (Mac: drag it onto the old copy in Applications and choose **Replace**). Your data and settings are kept.
 - **Mac (new):** this is the Mac version's first alpha. The menu-bar icon, the Dock behavior and **Start at login** are the parts most likely to need fixes. If **Cmd+Q** doesn't quit, use **Quit** in the menu-bar icon.
 
 ## Privacy
