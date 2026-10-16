@@ -31,7 +31,7 @@ It works best with an Ecowitt weather gateway and sensors, but it also runs with
   - a soil temperature probe
   - a rain gauge
 
-  Without a gateway, TurfCommand uses modeled weather for your location instead.
+  Missing a sensor? TurfCommand uses modeled weather for your location for that reading. Without a gateway, it uses modeled weather for everything.
 - **No administrator rights needed on Windows.** TurfCommand installs just for your Windows account.
 
 ## Install on Windows
@@ -85,11 +85,9 @@ This sets the forecast, radar, and the time zone used for daily totals. After yo
    - **On a Mac:** TurfCommand is allowed on the local network (**System Settings → Privacy & Security → Local Network**, TurfCommand switched on).
 
    You can also type the gateway's IP address yourself. Find it in your router's device list or in the **WS View Plus** app. Then click **Test connection**.
-3. Check the sensor choices that appear:
-   - **Air temperature & humidity**: pick your outdoor sensor.
-   - **Soil temperature**: pick your soil probe.
-
-   Each choice shows its current reading, so you can tell which is which. If it says "No rain gauge found", the rain meter stays empty.
+3. Check where each reading comes from: **Air temperature**, **Humidity**, **Soil temperature** and **Rainfall**.
+   - Pick your outdoor sensor for air temperature and humidity, and your soil probe for soil temperature. Each choice shows its current reading, so you can tell which is which.
+   - For any reading you don't have a sensor for (no soil probe, for example), choose **Modeled (Open-Meteo)**. Anything your gateway doesn't report starts out as Modeled. The dashboard marks modeled readings **· modeled**.
 
 **If you don't have sensors (yet):** choose **No sensors**. TurfCommand uses modeled weather for your location (from Open-Meteo, updated every 15 minutes), and the dashboard marks those readings **· modeled**. Modeled soil temperature usually runs a few degrees warmer than a real probe, so treat the pre-emergent timing as a rough guide. When your gateway is set up later, switch to it in **Settings**.
 
@@ -126,7 +124,8 @@ Click **Save and open dashboard**. If you saved Ecowitt keys, the 90-day history
   - **Check for updates** and **Install updates automatically**
   - **Save logs for support…** and **Open log folder** (see [Reporting a problem](#reporting-a-problem))
   - **Quit**: the way to really quit TurfCommand.
-- **Settings** (gear button, top of the dashboard): change your location, gateway, keys and lawn settings. With Ecowitt keys saved, it also has **Import last 90 days**.
+- **Settings** (gear button, top of the dashboard): change your location, gateway, where each reading comes from, keys and lawn settings. With Ecowitt keys saved, it also has **Import last 90 days**.
+- **Notifications** (bell button, top of the dashboard): applications due in the next 4 days, plus a **Low battery** warning when a sensor's battery has been down to one bar or less for an hour.
 - **Keep it running.** Weather is only recorded while TurfCommand is running.
   - With Ecowitt keys, missed hours are filled in from the cloud later.
   - Without keys, missed hours are estimated.
@@ -136,7 +135,7 @@ Click **Save and open dashboard**. If you saved Ecowitt keys, the 90-day history
 TurfCommand updates itself:
 
 - It checks for a new version when it starts and every 6 hours.
-- A new version downloads in the background. If TurfCommand finds it right after starting, it installs right away; otherwise it installs **around 3 AM**, or the next time your computer is on after a 3 AM it slept through. TurfCommand closes and reopens by itself.
+- A new version downloads in the background. If TurfCommand finds it right after starting, it installs right away; otherwise it installs **around 3 AM**, or the next time your computer is on after a 3 AM it slept through. TurfCommand closes and reopens by itself, and shows a small window with the progress while it installs.
 - Every update is checked against a digital signature before it runs, so only genuine TurfCommand updates install.
 - To update right away, choose **Check for updates** in the tray or menu-bar icon.
 - To turn automatic installs off, untick **Install updates automatically**. Updates then install only when you choose **Check for updates**.
@@ -169,11 +168,11 @@ Anyone on your home Wi-Fi can then open the shared dashboard and change its sett
 
 - **Security warnings at install:** expected on both systems for now. Windows: **More info → Run anyway**. Mac: **System Settings → Privacy & Security → Open Anyway**.
 - **US only:** radar and the map cover the lower 48 states. Panning far from home shows where the radar and detailed map stop.
-- **Modeled readings (no-sensor mode):** soil temperature runs warmer than a real probe, so the fall pre-emergent alert may come late.
+- **Modeled readings:** modeled soil temperature runs warmer than a real probe, so the fall pre-emergent alert may come late.
 - **A sensor in direct sun reads hot.** The temperature sensor built into the gateway (and any unshielded outdoor sensor) can read 15–20°F high in sunlight. That inflates GDD totals. Keep the sensor shaded, ideally in a radiation shield.
 - **A new install has no history** unless you run the 90-day Ecowitt import. Until then, 7-day totals and 5-day soil averages fill in over the first week.
 - **Another program using TurfCommand's port:** since 0.5.3, TurfCommand moves to a free port by itself and stays there. If you share it at home, use the new address that its Settings shows on your other computers. **0.5.2 and older** can't start in that case, so they can't update themselves either: download 0.5.3 and install it by hand (Mac: drag it onto the old copy in Applications and choose **Replace**). Your data and settings are kept.
-- **Mac (new):** this is the Mac version's first alpha. The menu-bar icon, the Dock behavior and **Start at login** are the parts most likely to need fixes. If **Cmd+Q** doesn't quit, use **Quit** in the menu-bar icon.
+- **Mac:** the Mac version is newer than the Windows one and has been tested on fewer computers. If **Cmd+Q** doesn't quit, use **Quit** in the menu-bar icon.
 
 ## Privacy
 
