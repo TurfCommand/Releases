@@ -30,6 +30,7 @@ It works best with an Ecowitt weather gateway and sensors, but it also runs with
   - an outdoor temperature/humidity sensor
   - a soil temperature probe
   - a rain gauge
+  - optional: one or more soil moisture sensors (WH51)
 
   Missing a sensor? TurfCommand uses modeled weather for your location for that reading. Without a gateway, it uses modeled weather for everything.
 - **No administrator rights needed on Windows.** TurfCommand installs just for your Windows account.
@@ -88,6 +89,7 @@ This sets the forecast, radar, and the time zone used for daily totals. After yo
 3. Check where each reading comes from: **Air temperature**, **Humidity**, **Soil temperature** and **Rainfall**.
    - Pick your outdoor sensor for air temperature and humidity, and your soil probe for soil temperature. Each choice shows its current reading, so you can tell which is which.
    - For any reading you don't have a sensor for (no soil probe, for example), choose **Modeled (Open-Meteo)**. Anything your gateway doesn't report starts out as Modeled. The dashboard marks modeled readings **· modeled**.
+4. If you have soil moisture sensors, tick the ones to use. TurfCommand averages them and uses them to tell when dry soil is slowing your lawn's growth. Without them, it estimates soil moisture from rain, irrigation and the weather.
 
 **If you don't have sensors (yet):** choose **No sensors**. TurfCommand uses modeled weather for your location (from Open-Meteo, updated every 15 minutes), and the dashboard marks those readings **· modeled**. Modeled soil temperature usually runs a few degrees warmer than a real probe, so treat the pre-emergent timing as a rough guide. When your gateway is set up later, switch to it in **Settings**.
 
@@ -108,6 +110,7 @@ The keys are stored in Windows Credential Manager or the macOS Keychain, not in 
 
 - **Height of cut**: how short you mow, in inches (for example 0.5). The Mowing Pressure card uses it to tell you when to mow: **Low pressure**, **Mow soon**, **Mow**, **Mow now**, **Overdue**. Leave it blank to see just the GDD count. Heights above 1" use estimated levels.
 - **Last PGR application** and **Last mow**: enter the dates if you know them. They start the PGR and mowing counters. If you leave them blank, the counters start today, and the PGR card shows **Not Set** until you log an application.
+- **I have an irrigation system**: tick it, pick your watering days and the inches each session puts down. Each scheduled day counts as watered, toward the weekly target and the soil moisture estimate. If your rain gauge also catches the sprinklers, tick **My rain gauge catches the sprinklers** so they aren't counted twice.
 - The PGR target, pre-emergent temperatures, weekly irrigation target and sprayer settings come with sensible defaults. Change them later if you like.
 
 Click **Save and open dashboard**. If you saved Ecowitt keys, the 90-day history import starts. It takes a minute or two, and you can open the dashboard while it runs.
@@ -125,6 +128,19 @@ Click **Save and open dashboard**. If you saved Ecowitt keys, the 90-day history
   - **Save logs for support…** and **Open log folder** (see [Reporting a problem](#reporting-a-problem))
   - **Quit**: the way to really quit TurfCommand.
 - **Settings** (gear button, top of the dashboard): change your location, gateway, where each reading comes from, keys and lawn settings. With Ecowitt keys saved, it also has **Import last 90 days**.
+- **Mowing Pressure card:** counts growth since your last mow. Growth is adjusted for what you log:
+  - a PGR application slows it for a few weeks;
+  - dry soil slows it;
+  - fertilizer speeds it up.
+
+  When one of these is changing growth, the card says so in a short line under the number.
+- **Rate your mows:** with a height of cut set, after you click **Log Mow** the card asks **How did the lawn feel this mow?** (**Too Early**, **About Right**, **Too Late**, or **Skip**). After 3 ratings, TurfCommand adjusts when it says to mow to fit your lawn, and shows how confident it is. **Settings → Your lawn → Mow ratings** lists your ratings and has **Reset to defaults**.
+- **Pre-emergent card:** it shows pre-emergent when it matters, from when the soil gets within 5°F of the target until you log an application. The rest of the year its back shows:
+  - **Spray Window:** good spraying hours for today and the next two days (wind 10 mph or less, 50–85°F, no rain for 4 hours after);
+  - **Fertilizer:** your last feeding (product and lb N, as logged), how much it's boosting growth, and this year's total N.
+
+  The round button in its corner flips to the other side for 30 seconds.
+- **Fertilizer:** in **My Chemicals**, add the product's nitrogen from its label: the first number of N-P-K, and the slow-release share of the N (liquids also need the weight per gallon). Sprays of that product then count automatically. To log a granular application, click the day in the TurfLab calendar and choose **Log fertilizer**.
 - **Notifications** (bell button, top of the dashboard): applications due in the next 4 days, plus a **Low battery** warning when a sensor's battery has been down to one bar or less for an hour.
 - **Keep it running.** Weather is only recorded while TurfCommand is running.
   - With Ecowitt keys, missed hours are filled in from the cloud later.
@@ -170,6 +186,7 @@ Anyone on your home Wi-Fi can then open the shared dashboard and change its sett
 - **US only:** radar and the map cover the lower 48 states. Panning far from home shows where the radar and detailed map stop.
 - **Modeled readings:** modeled soil temperature runs warmer than a real probe, so the fall pre-emergent alert may come late.
 - **A sensor in direct sun reads hot.** The temperature sensor built into the gateway (and any unshielded outdoor sensor) can read 15–20°F high in sunlight. That inflates GDD totals. Keep the sensor shaded, ideally in a radiation shield.
+- **Soil moisture sensors calibrate over time.** TurfCommand learns your soil's "wet" reading 36 hours after a rain of 1" or more. Until then it uses the wettest day the sensors have seen, so it may treat the soil as moister than it is. To teach it "dry": when the lawn looks drought-stressed (footprints stay, leaves fold or turn blue-gray), tap **My lawn looks drought-stressed - log dry point.** under Irrigation Remaining. **Settings** shows both points and can reset the dry one.
 - **A new install has no history** unless you run the 90-day Ecowitt import. Until then, 7-day totals and 5-day soil averages fill in over the first week.
 - **Another program using TurfCommand's port:** since 0.5.3, TurfCommand moves to a free port by itself and stays there. If you share it at home, use the new address that its Settings shows on your other computers. **0.5.2 and older** can't start in that case, so they can't update themselves either: download 0.5.3 and install it by hand (Mac: drag it onto the old copy in Applications and choose **Replace**). Your data and settings are kept.
 - **Mac:** the Mac version is newer than the Windows one and has been tested on fewer computers. If **Cmd+Q** doesn't quit, use **Quit** in the menu-bar icon.
